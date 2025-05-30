@@ -27,14 +27,32 @@
       perSystem =
         {
           pkgs,
+          lib,
           ...
         }:
+        let
+          aizawa-yasunori = pkgs.python3Packages.buildPythonApplication {
+            pname = "aizawa-yasunori";
+            version = "0.1.0";
+            pyproject = true;
+            src = lib.cleanSource ./.;
+
+            build-system = [
+              pkgs.python3Packages.setuptools
+            ];
+          };
+        in
         {
           treefmt = {
             projectRootFile = "flake.nix";
 
             # Nix
             programs.nixfmt.enable = true;
+          };
+
+          packages = {
+            inherit aizawa-yasunori;
+            default = aizawa-yasunori;
           };
 
           devShells.default = pkgs.mkShell {

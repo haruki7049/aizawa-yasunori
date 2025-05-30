@@ -1,6 +1,7 @@
 import random
 
-data = ["r-aizawa", "yasunori"]
+def main():
+    data = ["r-aizawa", "yasunori"]
 
-choice = random.choice(data)
-print(f"今日は{choice}になろう")
+    choice = random.choice(data)
+    print(f"今日は{choice}になろう")
