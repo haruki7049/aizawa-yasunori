@@ -1,5 +1,6 @@
 import random
 
+
 def main():
     data = ["r-aizawa", "yasunori"]
 
